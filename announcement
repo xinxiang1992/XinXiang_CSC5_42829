@@ -2,6 +2,6 @@
 using namespace std;
 int main()
 {
-cout<<"Remember to log out from public computer(s);
+cout<<"Remember to log out from public computer(s)";
 return 0;
 }
