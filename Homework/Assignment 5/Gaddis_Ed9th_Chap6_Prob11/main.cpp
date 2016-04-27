@@ -14,6 +14,8 @@
 
 //System Libraries
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 //User Libraries
@@ -21,8 +23,8 @@ using namespace std;
 //Global Constants
 
 //Function Prototypes
-float getscore(float);
-float calcaverage(float,float,float,float,float);
+void getscore(float &);
+void calcaverage(float,float,float,float,float);
 float findLowest(float,float,float,float,float);
 
 
@@ -33,10 +35,12 @@ float findLowest(float,float,float,float,float);
  */
 int main(int argc, char** argv) {
     //Declare Variables
+    srand(static_cast<unsigned int>(time(0)));
     float score1,score2,score3,score4,score5;
     float average;
     float low;
     //Input Values
+    
     cout<<"Please enter five scores."<<endl;
     
     cout<<"The first score is: ";
@@ -50,28 +54,29 @@ int main(int argc, char** argv) {
     cout<<"The fifth score is: ";
     getscore(score5);
     
-    //Output results
-    findLowest(score1,score2,score3,score4,score5);
-    //cout<<"The lowest one is "<<low<<endl;
-    //average=calcaverage(score1,score2,score3,score4,score5);
     
+    //Output results
+    cout<<"The lowest one is "<<findLowest(score1,score2,score3,score4,score5)<<endl;
+    
+    calcaverage(score1,score2,score3,score4,score5);
+ 
     return 0;
 }
 
-float getscore(float score)
+void getscore(float &score)
 {
     cin>>score;
     if(score<0||score>100)
     {
         cout<<"Invalid scores."<<endl;
     }
-    return score;
+    
     
 }
 
 float findLowest(float score1,float score2,float score3,float score4,float score5)
 {
-    float number;
+    float number=1478;
    if(score1<score2&&score1<score3&&score1<score4&&score1<score5)
    {
        number=score1;
@@ -92,18 +97,19 @@ float findLowest(float score1,float score2,float score3,float score4,float score
    {
        number=score5;
    }
-    cout<<"The lowest one is "<<number<<endl;
     
-   
+    
+    return number;
    
 }
 
-/*float calcaverage(float n1,float n2,float n3,float n4,float n5)
+void calcaverage(float n1,float n2,float n3,float n4,float n5)
 {
     float ave;
     float min;
-    findLowest(n1,n2,n3,n4,n5);
+    min=findLowest(n1,n2,n3,n4,n5);
+    
     ave=(n1+n2+n3+n4+n5-min)/4.0;
     cout<<"The average point is "<<ave<<endl;
-    return ave;
-}*/
+    
+}
